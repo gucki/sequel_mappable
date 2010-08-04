@@ -20,6 +20,7 @@ Gem::Specification.new do |gem|
   gem.files = Dir['Rakefile', '{lib,spec}/**/*', 'README*', 'LICENSE*', 'CHANGELOG*'] & `git ls-files -z`.split("\0")
 
   gem.add_dependency 'sequel', ">= 3.0.0"
+  gem.add_dependency 'geokit', ">= 1.5.0"
   gem.add_development_dependency 'sqlite3-ruby'
   gem.add_development_dependency 'rspec'
   gem.add_development_dependency 'yard'
