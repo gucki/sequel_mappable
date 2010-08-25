@@ -2,7 +2,7 @@
 # -*- encoding: utf-8 -*-
 
 require 'date'
-require 'lib/sequel_mappable/version'
+require File.expand_path("../lib/sequel_mappable/version", __FILE__)
 
 Gem::Specification.new do |gem|
   gem.name     = 'sequel_mappable'
