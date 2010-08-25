@@ -48,16 +48,16 @@ module Sequel
           sw, ne = bounds.sw, bounds.ne
           filter = self
           if bounds.crosses_meridian?
-            filter = filter.filter{ (:lng < ne.lng) | (:lng > sw.lng) }
+            filter = filter.filter{(lng < ne.lng) | (lng > sw.lng)}
           else
-            filter = filter.filter{ (:lng < ne.lng) & (:lng > sw.lng) }
+            filter = filter.filter{(lng < ne.lng) & (lng > sw.lng)}
           end
-          filter.filter{ (:lat < ne.lat) & (:lat > sw.lat) }
+          filter.filter{(lat < ne.lat) & (lat > sw.lat)}
         end
 
         def area(origin, within)
           sql = model.distance_sql(origin)
-          bounded_location(origin, within).filter{ sql.lit <= within }
+          bounded_location(origin, within).filter{sql.lit <= within}
         end
       end
     end
