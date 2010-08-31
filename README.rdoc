@@ -1,0 +1,76 @@
+=About
+
+Mappable provides geo distance-based filters and distance calculation functionality for 
+model. It requires the geokit gem and was heavily inspired by the 
+{geokit-rails gem}[http://github.com/andre/geokit-rails].
+
+==Install
+
+Simply install it as any other gem:
+
+  gem install sequel_mappable
+
+Or when using bundler, add it got your Gemfile:
+
+  gem sequel_mappable
+
+This should also install the geokit gem.
+
+==Quick Start
+
+In your model:
+
+  class User < Sequel::Model
+    plugin :mappable
+  end
+
+In your migrations:
+
+  class AddGeoDataToUser < Sequel::Migration
+    def up
+      alter_table :users do
+        add_column :lng, Float
+        add_column :lat, Float
+      end
+    end
+
+    def down
+      alter_table :users do
+        drop_column :lng
+        drop_column :lat
+      end
+    end
+  end
+
+Now add some records with valid geo data.
+
+In your controller you can then do:
+
+  def index
+    users_near_to_me = User.f_origin(User[1], 10)
+  end
+
+==Filters
+
+Please have a look at the source to get a full list of all available functionality.
+
+==Todo
+
+* Source documentation (rdoc)
+* Source cleanup (no hardcoding of column names)
+* Better support for :km, :miles, :sphere, :flat, etc.
+* Tests
+
+==Contributing
+
+If you'd like to contribute a feature or bugfix: Thanks! To make sure your
+fix/feature has a high chance of being included, please read the following
+guidelines:
+
+1. Fork the project.
+2. Make your feature addition or bug fix.
+3. Add tests for it. This is important so we don’t break anything in a future version unintentionally.
+4. Commit, do not mess with rakefile, version, or history. (if you want to have your own version, that is fine but bump version in a commit by itself I can ignore when I pull)
+5. Send me a pull request. Bonus points for topic branches.
+
+
