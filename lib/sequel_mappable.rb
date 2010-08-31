@@ -43,7 +43,7 @@ module Sequel
       end
 
       module DatasetMethods       
-        def bounded_location(origin, within)
+        def f_origin_bbox(origin, within)
           bounds = Geokit::Bounds.from_point_and_radius(origin, within, :units => :kms)
           sw, ne = bounds.sw, bounds.ne
           filter = self
@@ -55,9 +55,9 @@ module Sequel
           filter.filter{(lat < ne.lat) & (lat > sw.lat)}
         end
 
-        def area(origin, within)
+        def f_origin(origin, within)
           sql = model.distance_sql(origin)
-          bounded_location(origin, within).filter{sql.lit <= within}
+          f_origin_bbox(origin, within).filter{sql.lit <= within}
         end
       end
     end

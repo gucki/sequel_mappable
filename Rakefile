@@ -11,6 +11,7 @@ begin
     gem.homepage = 'http://github.com/gucki/sequel_mappable'
     gem.summary  = 'Usefull geo data filters for Sequel'
     gem.description = 'Sequel plugin which provides geo distance-based filters and distance calculation functionality for model.'
+    gem.add_dependency "geokit", ">= 1.5.0"
     gem.add_development_dependency "rspec", ">= 1.2.9"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
