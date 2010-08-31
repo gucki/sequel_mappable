@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "lib/sequel_mappable.rb",
+     "sequel_mappable.gemspec",
      "spec/sequel_mappable_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"
